@@ -6,8 +6,8 @@ $isLocal = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']);
 // 共通設定
 $dbHost = 'localhost';
 $dbName = $isLocal ? 'ccdonuts' : 'ss542909_ccdonuts';
-$dbUser = $isLocal ? 'root' : 'ss542909_user01';
-$dbPass = $isLocal ? '' : 'pepec0001'; // ← ローカルは空、本番は指定あり
+$dbUser = $isLocal ? '*****' : '*******';
+$dbPass = $isLocal ? '' : '*******'; // ← ローカルは空、本番は指定あり
 
 // PDO接続
 $dsn = "mysql:host={$dbHost};dbname={$dbName};charset=utf8mb4";

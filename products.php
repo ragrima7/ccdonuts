@@ -13,7 +13,7 @@ include __DIR__ . '/includes/header.php';
 
 // 全商品取得
 try {
-    $pdo = new PDO('mysql:host=localhost;dbname=ccdonuts;charset=utf8', 'root', '', [
+    $pdo = new PDO('mysql:host=localhost;dbname=ccdonuts;charset=utf8', '****', '', [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
     $stmt = $pdo->query('SELECT id, name, price FROM products');
