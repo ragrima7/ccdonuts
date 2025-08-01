@@ -1,0 +1,89 @@
+/* styles/products.css */
+main.container {
+  margin-top: 80px; /* ヘッダー高さ＋余白分 */
+}
+
+/* グリッドレイアウト */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  margin: 32px 0;
+}
+
+/* 商品カード */
+.product-card {
+  border: 1px solid #D9D9D9;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  transition: box-shadow 0.3s ease;
+}
+.product-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* 商品画像 */
+.product-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* 商品名 */
+.product-card h2 {
+  margin: 16px 0 8px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #333333;
+}
+
+/* 価格 */
+.product-card .price {
+  font-size: 16px;
+  line-height: 25.6px;
+  color: #7F5539;
+  margin-bottom: 16px;
+}
+
+/* カートに入れるボタン */
+.product-card .btn-add-cart {
+  margin-top: auto;
+  width: 100%;
+  height: 52px;
+  /* background: #BF0000; */
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.product-card .btn-add-cart:hover {
+  transform: scale(1.1);
+}
+.product-card .btn-add-cart:active {
+  transform: scale(1);
+  background-color: #000000;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .product-card h2 {
+    font-size: 16px;
+    margin: 12px 0 6px;
+  }
+  .product-card .price {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .product-card .btn-add-cart {
+    height: 36px;
+    font-size: 14px;
+  }
+}

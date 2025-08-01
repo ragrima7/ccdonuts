@@ -1,0 +1,132 @@
+.register-page {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 0 16px;
+}
+
+.register-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.register-form label {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+.register-form input {
+  margin-top: 6px;
+  padding: 8px;
+  border: 1px solid #D9D9D9;
+  font-size: 16px;
+  height: 40px;
+}
+
+.zip-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.required {
+  color: #BF0000;
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+.btn-submit {
+  background: #7F5539;
+  color: #fff;
+  border: none;
+  width: 200px;
+  height: 48px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-submit:hover {
+  background: #000;
+}
+
+@media (max-width: 768px) {
+  .register-page {
+    max-width: 375px;
+    margin: 40px auto;
+  }
+  .register-form label {
+    max-width: 295px;
+  }
+  .register-form input {
+    font-size: 14px;
+    height: 20px;
+  }
+}
+.register-errors ul {
+  color: #BF0000;
+  margin-bottom: 16px;
+}
+.confirm-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px auto;
+  max-width: 400px;
+}
+.confirm-list li {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+.zip-group input:first-child { width: 90px; }
+.zip-group input:last-child  { width: 120px; }
+
+.existing-account,
+.to-login {
+  text-align: center;
+  margin: 24px 0 16px;
+}
+.existing-account a,
+.to-login a {
+  color: #7F5539;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+}
+.existing-account a:hover,
+.to-login a:hover {
+  text-decoration: underline;
+}
+
+.ikanonaiyou {
+  display: block;
+  margin: 16px auto;
+}
+
+.btn-submit {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-link {
+  display: block;
+  width: 260px;
+  margin: 16px auto;
+  padding: 12px 0;
+  background-color: #7F5539;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.btn-link:hover {
+  background-color: #000;
+}

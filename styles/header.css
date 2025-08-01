@@ -1,0 +1,193 @@
+/* ヘッダー全体：縦に3段構成、最大幅1366pxで中央寄せ */
+header {
+  width: 100%;
+  display: block;
+  height: 220px;
+}
+
+/* 各内部コンテンツの横中央寄せ */
+.header-top,
+.header-search,
+.header-welcome {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1366px; 
+}
+
+
+/* ─ 第1段：上部ヘッダー ─ */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1366px;
+  height: 118px;
+  padding: 0 95px;
+  background-color: #EDE0D4;
+  box-sizing: border-box;
+}
+
+/* ドロワーアイコン（左端） */
+.drawer-toggle img {
+  width: 50px;
+  height: 50px;
+  margin-left: 0;
+  cursor: pointer;
+}
+.drawer-toggle button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+
+/* ロゴ（中央） */
+.logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.logo img {
+  width: 87px;
+  height: 78px;
+}
+
+/* アイコン群（右端） */
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-right: 0px;
+}
+.icons img {
+  /* width: 36px; */
+  height: 54px;
+  cursor: pointer;
+}
+
+/* ─ 第2段：検索フォーム ─ */
+.header-search {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  max-width: 1366px;
+  height: 64px;
+  padding: 0 40px;
+  background-color: #B392AC;
+  box-sizing: border-box;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+.search-form button {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  background: #EDE0D4;
+  border: 1px solid #7F5539;
+  border-right: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.search-form input {
+  width: 320px;
+  height: 40px;
+  border: 1px solid #7F5539;
+  border-left: none;
+  padding: 0 8px;
+  font-size: 16px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+}
+
+/* ─ 第3段：ようこそ表示 ─ */
+.header-welcome {
+  width: 100%;
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 8px 40px;
+  background-color: #fff;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.user-welcome {
+  font-size: 12px;
+  color: #7F5539;
+  white-space: nowrap;
+    max-width: 1366px;
+  margin: 0 auto;
+  padding: 12px 0 12px 103px;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  border-bottom: #7F5539 1px solid ;
+}
+
+/* ─ SP対応：スマホサイズでの表示調整 ─ */
+@media (max-width: 768px) {
+  header {
+    max-width: 100%;
+    align-items: stretch;
+  }
+
+  .header-top {
+    height: 130px;
+    padding: 0 15px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .drawer-toggle img {
+    width: 25px;
+    height: 25px;
+    margin-left: 12px;
+  }
+
+  .logo img {
+    width: 62px;
+    height: 53px;
+  }
+
+  .icons {
+    gap: 10px;
+    margin-right: 15px;
+  }
+
+  .icons img {
+    /* width: 24px; */
+    height: 36px;
+  }
+
+  .header-search {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 15px;
+    height: auto;
+  }
+
+  .search-form {
+    width: 100%;
+  }
+
+  .search-form input {
+    width: calc(100% - 40px);
+    font-size: 14px;
+  }
+
+  .user-welcome {
+    font-size: 10px;
+    margin-bottom: 8px;
+  }
+
+  .header-welcome {
+    padding: 8px 15px;
+  }
+}

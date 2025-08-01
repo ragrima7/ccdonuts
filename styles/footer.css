@@ -1,0 +1,144 @@
+/* styles/footer.css */
+
+/* フッター全体 */
+.site-footer {
+  background: #EDE0D4;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  padding-top: 20px;
+}
+
+/* 内側コンテナがない場合は直接センター寄せ */
+.sns-icons,
+.footer-logo,
+.site-footer p {
+  margin-bottom: 16px;
+}
+
+/* フッターリンク */
+
+.footer-links {
+  display: flex;
+  width: 100%;
+  max-width: 510px; 
+  height: 40px;
+  margin-left:202px;
+  margin-bottom:64px;
+  align-items: start;
+}
+
+.footer-links a {
+  flex: 1;
+  box-sizing: border-box;
+  text-align: start;
+  line-height: 36px;
+  border-left: 1px solid #7F5539;
+  padding: 0 12px;        /* 左右に余白 */
+  text-decoration: none;
+  color: #7F5539;
+  font-size: 16px;
+}
+
+/* 最初のリンクだけ線を消す */
+
+.footer-links a:hover {
+  color: #000;
+}
+
+/* SNSアイコン */
+.sns-icons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  gap: 72px;
+}
+
+.sns-icons a img {
+  width: 32px;
+  height: 32px;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.sns-icons a:hover img {
+  opacity: 0.7;
+}
+
+/* ロゴ */
+.footer-logo img {
+  width: 144px;
+  height: 128px;
+  display: block;
+  margin: 0 auto 72px;
+}
+.hr {
+  background-color: #7F5539;
+}
+/* コピーライト */
+.site-footer p {
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+/* スマホ対応  */
+@media (max-width: 768px) {
+  .site-footer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 1. リンク群：縦並び・左端寄せ */
+  .footer-links {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 0 32px;
+    padding-left: 16px;
+  }
+
+  /* 2. SNSアイコン：横並び・左端寄せ */
+  .sns-icons {
+    order: 2;
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-top:60px;
+    padding-left: 16px;
+  }
+
+  /* 3. ロゴ：右端寄せ */
+  .footer-logo {
+    order: 3;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 16px;
+    margin: 0 0 12px;
+  }
+  .footer-logo img {
+    width: 100px;
+    height: auto;
+    margin: 0;
+  }
+
+  /* 4. ボーダー：横幅いっぱい */
+  .site-footer .hr {
+    order: 4;
+    align-self: stretch;
+    width: 100%;
+    height: 1px;
+    margin: 0;
+    background-color: #7F5539;
+  }
+
+  /* 5. コピーライト：中央寄せ */
+  .site-footer p {
+    order: 5;
+    align-self: center;
+    margin: 16px 0 24px;
+    color: #999;
+    font-size: 12px;
+  }
+}

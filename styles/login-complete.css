@@ -1,0 +1,63 @@
+/* login-complete.css 最終修正版 */
+
+/* ■ コンテナ: ログイン完了ページ */
+.complete-page {
+  max-width: 300px;
+  margin: 40px auto;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* ■ ページ見出し */
+.complete-page h1 {
+  display: inline-block;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-bottom: 2px solid #FFD233;
+  margin-bottom: 60px;
+}
+
+/* ■ メッセージ枠 */
+.complete-page .complete-box {
+  border: 1px solid #F7D1CD;
+  border-radius: 4px;
+  padding: 24px 16px;
+  text-align: left;
+  margin: 0 auto 24px;
+}
+.complete-page .complete-box p {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+.complete-page .complete-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* ■ アクションリンク（枠外） */
+.complete-page .action-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: right; /* 右端揃え */
+}
+.complete-page .action-links a {
+  font-size: 1rem;
+  color: #7F5539;
+  text-decoration: none;
+}
+.complete-page .action-links a:hover {
+  text-decoration: underline;
+}
+
+/* ■ PC時の微調整 */
+@media (min-width: 769px) {
+  .complete-page {
+    margin: 80px auto;
+  }
+  .complete-page .complete-box {
+    padding: 24px 32px;
+    margin-bottom: 32px;
+  }
+}

@@ -1,0 +1,105 @@
+/* styles/product-detail.css */
+
+/* 商品詳細ページ専用レイアウト */
+.product-detail {
+  display: flex;
+  gap: 32px;
+  margin: 48px 0;
+}
+
+/* 左：商品画像 */
+.pd-image {
+  flex: 1;
+}
+.pd-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid #D9D9D9;
+}
+
+/* 右：商品情報 */
+.pd-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.pd-info h1 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+.pd-price {
+  font-size: 24px;
+  color: #BF0000;
+  margin-bottom: 24px;
+}
+.pd-desc {
+  font-size: 16px;
+  line-height: 25.6px;
+  color: #333333;
+  margin-bottom: 32px;
+}
+
+/* 数量入力 + カートボタン */
+.pd-cart-form {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.pd-cart-form input[type="number"] {
+  width: 60px;
+  padding: 8px;
+  border: 1px solid #CCC;
+  border-radius: 0;
+  font-size: 16px;
+}
+.pd-cart-form .btn-add-cart {
+  width: 260px;
+  height: 52px;
+  /* background: #BF0000; */
+  color: #FFF;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.pd-cart-form .btn-add-cart:hover {
+  transform: scale(1.1);
+}
+.pd-cart-form .btn-add-cart:active {
+  transform: scale(1);
+  background-color: #000;
+}
+
+/* ── SP レスポンシブ ── */
+@media (max-width: 768px) {
+  .product-detail {
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .pd-info h1 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  .pd-price {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  .pd-desc {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 24px;
+  }
+  .pd-cart-form {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .pd-cart-form .btn-add-cart {
+    width: 100%;
+    height: 36px;
+    font-size: 14px;
+  }
+}

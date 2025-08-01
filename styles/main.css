@@ -1,0 +1,522 @@
+/* ────────────────────────────────────────────────────
+  styles/main.css
+──────────────────────────────────────────────────── */
+
+/* ── 1. Reset / Base ───────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── 2. Typography ─────────────────────────────────── */
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* ── 3. Utility Containers ────────────────────────── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+main.container {
+  margin-top: 80px;
+}
+
+/* ── 4. Buttons ───────────────────────────────────── */
+.btn-add-cart,
+.btn-link {
+  display: inline-block;
+  background: #7F5539;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-add-cart:hover,
+.btn-link:hover {
+  transform: scale(1.1);
+}
+
+.btn-add-cart:active,
+.btn-link:active {
+  transform: scale(1);
+  background-color: #000;
+}
+/* ドロワー */
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  z-index: 1000;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.drawer.active {
+  transform: translateX(0);
+}
+
+.drawer-nav {
+  background-color: #7F5539;
+  width: 583px;
+  height: 748px;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* 閉じるボタン（画像使用） */
+.drawer-nav {
+  position: relative;
+}
+.drawerLogo {
+  position: absolute;
+  top: 1rem;
+  left: 103px; 
+  width: 87px;
+  height: 78px;
+}
+
+.drawer-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  z-index: 2000;
+}
+
+.drawer-close img {
+  width: 54px;
+  height: 54px;
+  display: block;
+}
+
+.drawer.active .drawer-close {
+  display: block;
+  justify-content: center;
+}
+
+/* メニュー項目：中央揃え＋白色＋下線ボーダー */
+.navi-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.drawer-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.drawer-nav li {
+  width: 400px;
+  height: 64px;
+  text-align: start;
+  align-items: center;
+  font-size: 24px;
+  line-height: 36px;
+  color: #fff;
+  padding-bottom: 0;
+  border-bottom: 0.5px solid #fff;
+}
+
+.drawer-nav a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.drawer-nav a:hover {
+  opacity: 0.75;
+}
+
+/* スマホ対応 */
+@media screen and (max-width: 480px) {
+  .drawer-nav {
+    width: 100%;
+    height: 488px;
+    padding: 0;
+    gap: 5rem;
+  }
+
+  .drawer-nav li {
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0;
+  border-bottom: 0.5px solid #fff;
+  }
+
+  .drawer-close img {
+    width: 28px;
+    height: 28px;
+  }
+
+.drawer-nav a {
+  text-align: start;
+  padding-left: 1rem;
+  padding-top: 1rem;
+}
+
+.drawerLogo {
+  width: 59px;
+  height: 52px;
+  top: 12px;
+  left: 12px;
+}
+
+
+}
+
+
+/* ── 6. Promo Grid ───────────────────────────────── */
+.promo-grid {
+  display: flex;
+  gap: 80px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.promo-item {
+  flex: 1;
+}
+
+.promo-item img {
+  width: 100%;
+  max-width: 480px !important;
+  height: auto;
+  display: flex;
+  margin: 0 auto;
+}
+
+/* ── 7. Recommend Section ────────────────────────── */
+.recommend {
+  margin: 64px 0;
+}
+.wide-link {
+  max-width: 1040px;
+  margin: auto;
+}
+.recommend-cards {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.recommend-cards .card {
+  flex: 1;
+  text-align: center;
+}
+
+.recommend-cards .card img {
+  width: 100%;
+  display: block;
+}
+
+.recommend-cards .label.new {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.recommend-wide {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.recommend-wide img {
+  width: 100%;
+  display: block;
+}
+
+.recommend-wide .wide-text {
+  position: absolute;
+  bottom: 16px;
+  right: 24px;
+  color: #fff;
+  font-size: 20px;
+  text-shadow: 0 0 4px rgba(0,0,0,0.6);
+}
+
+/* ── 8. Philosophy Section ───────────────────────── */
+.philosophy {
+  position: relative;
+  margin: 64px 0;
+  text-align: center;
+}
+
+.philosophy h2 {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.philosophy p {
+  font-size: clamp(20px, 4vw, 24px);
+  margin: 4px 0;
+}
+
+.philosophy {
+  width: 100vw;
+  max-width: 1366px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+}
+/* ── 9. Grid & Product Cards ─────────────────────── */
+.grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  margin-bottom: 80px;
+}
+
+.product-card {
+  padding: 16px;
+  text-align: center;
+  border: none;
+  justify-content: space-between;
+}
+
+.product-card .badge {
+  display: inline-block;
+  background: #FFD233;
+  color: #fff;
+  padding: 4px 8px;
+  font-weight: 400;
+  width: 60px;
+  height: 60px;
+  line-height: 56px;
+  font-size: 24px;
+  text-align: center;
+  margin: 0 auto 24px;
+}
+
+.product-card img {
+  width: 100%;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.product-card h3 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.product-card .price {
+  font-size: 16px;
+  line-height: 25.6px;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-weight: 700;
+  color: #bf0000 !important;
+  text-align: start;
+}
+.btn-add-cart .price {
+  margin: auto;
+}
+
+/* ── 10. Ranking Section ──────────────────────────── */
+.ranking {
+  margin-bottom: 80px;
+  text-align: center;
+}
+.rank {
+  font-size: 32px;
+  font-weight: 400;
+  padding-bottom: 20px;
+  border-bottom: #FFD233 2px solid ;
+  display: inline-block;
+  margin-bottom: 120px ;
+}
+/* ── 11. Responsive Styles ───────────────────────── */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 8px;
+  }
+
+  /* Promo & Recommend stacked */
+  .promo-grid,
+  .recommend-cards {
+    flex-direction: column;
+  }
+
+  /* Grid: 2列 */
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* Wide link text */
+  .recommend-wide .wide-text {
+    font-size: 16px;
+    bottom: 12px;
+    right: 16px;
+  }
+
+  /* Button sizing */
+  .btn-add-cart {
+    width: 60px;
+    height: 36px;
+  }
+
+  /* Typography shrink */
+  .philosophy h2 {
+    font-size: 24px;
+  }
+  .rank {
+    margin-bottom: 80px;
+  }
+} /* <--- ここに閉じタグが不足していました */
+
+/* PC以上 */
+@media (min-width: 769px) {
+  /* Grid: 3列（推奨数） */
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  /* Button sizing */
+  .btn-add-cart {
+    width: 260px !important;
+    height: 52px;
+  }
+}
+
+/* 1. 大画像のあふれを防止 */
+.hero-img,
+.promo-item img,
+.recommend-wide img,
+.philosophy-bg {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 2. 商品一覧バナー内テキストカラー変更 */
+.recommend-wide .wide-text {
+  color: #7F5539;     /* ← 指定色に */
+}
+
+/* 3. Philosophy セクション：白抜きテキスト重ね */
+.philosophy {
+  position: relative;
+  overflow: hidden;
+}
+
+.phil-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0,0,0,0.7);
+}
+
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }
+  .container {
+    padding: 0 16px;
+  }
+  .promo-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .product-card .badge {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    margin-bottom: 20;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .philosophy-bg {
+    width: auto;
+    height: 568px;
+    object-fit: cover;
+  }
+  .phil-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: -100px;
+    font-size: 16px;
+  }
+  .phil-sub {
+    font-size: 16px;
+  }
+  .phil-quote {
+    font-size: 20px;
+    margin-top: 80px;
+  }
+}
+
+
+.banner-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 重ねるテキスト */
+.banner-text {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+  color: #7F5539;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0.2em 0.4em;
+  font-family: Noto Serif JP;
+}
+
+/* SP向けメディアクエリ（必要なら） */
+@media (max-width: 768px) {
+  .banner-text {
+    font-size: 0.9rem;
+    bottom: 0.4em;
+    right: 0.4em;
+  }
+}
