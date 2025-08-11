@@ -1,0 +1,55 @@
+/* styles/breadcrumb.css */
+
+/* ベーススタイル */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb li + li::before {
+  content: "／";
+  margin: 0 8px;
+  color: #D9D9D9;
+  font-weight: 400;
+}
+
+/* リンク */
+.breadcrumb a {
+  color: #7F5539;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+  color: #BF0000;
+}
+
+/* 現在地（最終項目）はリンクなしかつ強調 */
+.breadcrumb li:last-child a,
+.breadcrumb li:last-child span {
+  color: #333;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: default;
+}
+
+/* SP対応：フォントサイズと間隔を小さく */
+@media (max-width: 768px) {
+  .breadcrumb {
+    font-size: 12px;
+    margin: 12px 0;
+  }
+  .breadcrumb li + li::before {
+    margin: 0 4px;
+  }
+}

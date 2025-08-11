@@ -6,9 +6,17 @@ main.container {
 /* グリッドレイアウト */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 24px;
   margin: 32px 0;
+  /* モバイル〜タブレット：2列 */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* 768px以上：常に3列（992px以降も3列のまま） */
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 /* 商品カード */
@@ -28,7 +36,9 @@ main.container {
 .product-card img {
   width: 100%;
   height: auto;
+  display: block;
   object-fit: cover;
+  max-width: none; /* HTML属性や他CSSの上限を無効化 */
 }
 
 /* 商品名 */
@@ -52,38 +62,257 @@ main.container {
   margin-top: auto;
   width: 100%;
   height: 52px;
-  /* background: #BF0000; */
+  background: #BF0000; /* 元はコメントアウトされていたので固定化 */
   color: #FFFFFF;
   border: none;
   cursor: pointer;
   font-size: 16px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 .product-card .btn-add-cart:hover {
-  transform: scale(1.1);
+  transform: scale(1.03);
 }
 .product-card .btn-add-cart:active {
   transform: scale(1);
   background-color: #000000;
 }
 
-/* スマホ対応 */
+/* スマホ微調整（必要なら） */
 @media (max-width: 768px) {
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin: 24px 0;
+  .product-grid { gap: 16px; margin: 24px 0; }
+  .product-card h2 { font-size: 16px; margin: 12px 0 6px; }
+  .product-card .price { font-size: 14px; margin-bottom: 12px; }
+  .product-card .btn-add-cart { height: 40px; font-size: 14px; }
+}
+/* --- グリッド列数（要件どおり） --- */
+.product-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* ≤768px: 2列 */
+  justify-items: stretch;   /* ← カードを縮めず列幅いっぱいに */
+  align-items: stretch;
+}
+@media (min-width: 768px) {
+  .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } /* ≥768px: 3列固定 */
+}
+
+/* --- カードが細くならないように“伸ばす” --- */
+.product-card {
+  width: 100% !important;       /* 列幅に合わせる */
+  justify-self: stretch !important;
+}
+.product-card > a {              /* 枠（リンク）も全幅に */
+  display: block;
+  width: 100%;
+}
+.product-card form {             /* ボタン行もカード幅に揃える */
+  width: 100%;
+}
+
+/* 念押し：画像の固定幅を打ち消す */
+.product-card img {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto;
+  display: block;
+}
+/* 商品一覧ページだけで .container をリセット */
+.products-page {
+  display: block;          /* 他ページで flex 指定されてても打ち消す */
+  max-width: none;         /* 幅制限を解除（必要なら 1200px とかでもOK） */
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: 16px;    /* 余白はお好みで */
+  text-align: initial;     /* center 指定を打ち消し */
+}
+
+/* グリッドは列幅いっぱいに伸ばす */
+.products-page .product-grid {
+  justify-items: stretch;
+  align-items: stretch;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* ≤768px: 2列 */
+}
+@media (min-width: 768px) {
+  .products-page .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* ≥768px: 3列固定 */
   }
-  .product-card h2 {
-    font-size: 16px;
-    margin: 12px 0 6px;
+}
+
+/* 念押し：カードと画像は列幅いっぱい */
+.products-page .product-card,
+.products-page .product-card > a,
+.products-page .product-card form { width: 100%; }
+.products-page .product-card img {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto;
+  display: block;
+}
+/* ===============================
+   商品一覧ページ 調整パッチ
+   変更はここだけ触ればOK
+   =============================== */
+:root{
+  --container-max: 1200px;      /* グリッド全体の最大幅 */
+  --grid-gap: 24px;             /* グリッドのすき間 */
+  --card-padding: 16px;         /* 各カードの内側余白 */
+  --thumb-aspect: 1 / 1;        /* サムネ比率 (1/1=正方形, 4/3 等も可) */
+  --btn-base: #7F5539;          /* ボタン通常（茶色） */
+  --btn-hover: #6d4b33;         /* ホバー時の茶色(少し暗く) */
+  --btn-active: #BF0000;        /* クリック時（赤） */
+  --divider-color: #D9D9D9;     /* 下線の色 */
+  --divider-thickness: 2px;     /* 下線の太さ */
+  --divider-width: 80%;         /* 下線の幅（% か px で指定可）*/
+}
+
+/* このページのコンテナ（他ページの .container 影響を打ち消し） */
+.products-page{
+  max-width: var(--container-max);
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: 16px;
+}
+
+/* グリッド：≤768px=2列／≥768px=3列固定 */
+.products-page .product-grid{
+  display: grid;
+  gap: var(--grid-gap);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-items: stretch;
+  align-items: stretch;
+  margin: 32px 0 24px;
+}
+@media (min-width: 768px){
+  .products-page .product-grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .product-card .price {
-    font-size: 14px;
-    margin-bottom: 12px;
+}
+
+/* カードの基本 */
+.products-page .product-card{
+  width: 100%;
+  border: 1px solid #D9D9D9;
+  background: #fff;
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .2s ease;
+}
+.products-page .product-card:hover{
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+/* 画像まわり（比率固定で整える） */
+.products-page .product-card .thumb{
+  aspect-ratio: var(--thumb-aspect);
+  overflow: hidden;
+}
+.products-page .product-card img{
+  width: 100% !important;
+  height: 100%;
+  max-width: none !important;
+  display: block;
+  object-fit: cover; /* 端が少し切れてもOKならcover／全面見せたいならcontain */
+}
+
+/* 見出し・価格 */
+.products-page .product-card h2{
+  margin: 16px 0 8px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+.products-page .product-card .price{
+  color: #7F5539;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+/* ボタン：通常=茶色／クリック時=赤 */
+.products-page .product-card .btn-add-cart{
+  width: 100%;
+  height: 52px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: var(--btn-base);
+  transition: background-color .15s ease, transform .15s ease;
+  margin-top: auto;
+}
+.products-page .product-card .btn-add-cart:hover{
+  background: var(--btn-hover);
+  transform: translateY(-1px);
+}
+.products-page .product-card .btn-add-cart:active{
+  background: var(--btn-active);
+  transform: translateY(0);
+}
+
+/* 商品一覧の「下のボーダー」：幅・太さ・色をここで調整 */
+.products-page .product-grid::after{
+  content: "";
+  display: block;
+  width: var(--divider-width);
+  height: var(--divider-thickness);
+  background: var(--divider-color);
+  margin: 24px auto 0; /* 上余白 / 中央寄せ */
+}
+
+/* パンくず（このページだけの軽い調整。breadcrumb.cssがあれば上書き用） */
+.products-page .breadcrumb{
+  margin: 12px 0 8px;
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.products-page .breadcrumb a{ color: inherit; text-decoration: none; }
+.products-page .breadcrumb a:hover{ text-decoration: underline; }
+.products-page .breadcrumb .sep{ opacity: .6; }
+
+/* SP微調整 */
+@media (max-width: 768px){
+  .products-page .product-grid{ gap: 16px; margin: 24px 0 16px; }
+  .products-page .product-card .btn-add-cart{ height: 44px; }
+  .products-page .product-card h2{ font-size: 16px; }
+  .products-page .product-card .price{ font-size: 14px; }
+}
+
+/* ===== 商品一覧ページ 固定パッチ ===== */
+.products-page .product-grid{
+  display:grid;
+  gap:24px;
+  grid-template-columns:repeat(2,minmax(0,1fr)); /* ≤768px: 2列 */
+}
+@media (min-width:768px){
+  .products-page .product-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr)); /* ≥768px: 3列固定 */
   }
-  .product-card .btn-add-cart {
-    height: 36px;
-    font-size: 14px;
-  }
+}
+
+.products-page .product-card,
+.products-page .product-card > a,
+.products-page .product-card form{ width:100%; }
+
+.products-page .product-card .thumb{ aspect-ratio:1 / 1; overflow:hidden; }
+.products-page .product-card img{
+  width:100% !important; max-width:none !important;
+  height:100%; display:block; object-fit:cover;
+}
+
+/* ボタン：通常=茶色／クリック時=赤 */
+.products-page .product-card .btn-add-cart{
+  width:100%; height:52px; border:none; cursor:pointer;
+  color:#fff; background:#7F5539;
+  transition:background-color .15s ease, transform .15s ease;
+  margin-top:auto;
+}
+.products-page .product-card .btn-add-cart:hover{ background:#6d4b33; }
+.products-page .product-card .btn-add-cart:active{ background:#BF0000; }
+
+/* 商品一覧の下のボーダー */
+.products-page .product-grid::after{
+  content:""; display:block; width:80%; height:2px;
+  background:#D9D9D9; margin:24px auto 0;
 }
