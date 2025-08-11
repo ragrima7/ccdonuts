@@ -1,6 +1,5 @@
+
 <?php
-//  環境対応　本番←→ローカル　そのままで動かすために用意したdb.phpにアクセス
-require_once __DIR__ . '/db.php';
 
 session_start();
 

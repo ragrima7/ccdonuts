@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+require_once __DIR__ . '/db.php'; 
+
 $siteName  = 'C.C.Donuts';
 $pageTitle = 'ログイン';
 $additionalCss = 'styles/login.css';
@@ -14,12 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors[] = 'メールアドレスとパスワードを入力してください。';
   } else {
     try {
-      $pdo = new PDO(
-        'mysql:host=localhost;dbname=ccdonuts;charset=utf8',
-        '***',
-        '',
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-      );
 
       // ← ここを修正
       $stmt = $pdo->prepare(

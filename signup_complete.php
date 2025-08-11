@@ -2,6 +2,8 @@
 // signup_complete.php
 session_start();
 
+require_once __DIR__ . '/db.php';
+
 // POST 以外は戻す
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: signup.php');
@@ -25,12 +27,6 @@ $pageTitle     = '登録完了';
 $additionalCss = 'styles/register.css';
 
 try {
-    $pdo = new PDO(
-        'mysql:host=localhost;dbname=ccdonuts;charset=utf8',
-        '****',
-        '',
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-    );
 
     // トランザクション開始
     $pdo->beginTransaction();

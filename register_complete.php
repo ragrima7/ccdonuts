@@ -2,6 +2,8 @@
 // register_complete.php
 session_start();
 
+require_once __DIR__ . '/db.php';
+
 $siteName  = 'C.C.Donuts';
 $pageTitle = '登録完了';
 $additionalCss = 'styles/register.css';
@@ -27,7 +29,7 @@ $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 try {
     $pdo = new PDO(
         'mysql:host=localhost;dbname=ccdonuts;charset=utf8',
-        '****',
+        'root',
         '',
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
     );

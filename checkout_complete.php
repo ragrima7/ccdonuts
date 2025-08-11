@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require_once __DIR__ . '/db.php'; 
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['brand'])) {
     die('このページには正しい手順でアクセスしてください');
 }
@@ -11,16 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_SESSION['user_id'])) {
 }
 
 try {
-    $pdo = new PDO(
-        'mysql:host=localhost;dbname=ccdonuts;charset=utf8',
-        '****', '',
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-    );
-
-    // トランザクション開始
+    // ── トランザクション開始 ──
     $pdo->beginTransaction();
 
-    // 登録
+    // ── 登録処理 ──
     $stmt = $pdo->prepare("
         INSERT INTO credit_cards
           (user_id, brand, created_at)

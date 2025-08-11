@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+require_once __DIR__ . '/db.php'; 
+
 $siteName  = 'C.C.Donuts';
 $pageTitle = '注文履歴';
 $additionalCss = 'styles/mypage.css';
@@ -11,12 +14,6 @@ if (!isset($_SESSION['user_id'])) {
 
 // DB接続
 try {
-    $pdo = new PDO(
-        'mysql:host=localhost;dbname=ccdonuts;charset=utf8',
-        '****',
-        '',
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-    );
 
     // 注文履歴を取得（親テーブル）
     $sql = "

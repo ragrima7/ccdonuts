@@ -1,6 +1,9 @@
 <?php
 // product_detail.php
 session_start();
+
+require_once __DIR__ . '/db.php';
+
 $siteName  = 'C.C.Donuts';
 $pageTitle = '商品詳細';
 
@@ -18,12 +21,7 @@ if (!$id) {
 
 // ② 該当商品を取得
 try {
-    $pdo = new PDO(
-        'mysql:host=localhost;dbname=ccdonuts;charset=utf8',
-        '****',
-        '',
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-    );
+
     $stmt = $pdo->prepare('SELECT id, name, price, introduction AS description FROM products WHERE id = ?');
     $stmt->execute([$id]);
     $item    = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -40,7 +38,8 @@ try {
 
 // ここで PHP ブロックを閉じる
 ?>
-<main class="container">
+ <!-- 共通で使っていたcontainerの名前を変える --> 
+<main class="product-detail-container ">
   <div class="product-detail">
     <div class="pd-image">
         <img src="images/product-<?= $item['id'] ?>.png"

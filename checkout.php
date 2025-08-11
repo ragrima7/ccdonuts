@@ -2,6 +2,8 @@
 // checkout.php
 session_start();
 
+require_once __DIR__ . '/db.php'; 
+
 $siteName      = 'C.C.Donuts';
 $pageTitle     = '購入確認';
 $additionalCss = 'styles/checkout.css';
@@ -19,11 +21,6 @@ if (empty($_SESSION['cart'])) {
 }
 
 try {
-    $pdo = new PDO(
-        'mysql:host=localhost;dbname=ccdonuts;charset=utf8',
-        '****', '',
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-    );
 
     // --- カート内の商品取得 ---
     $ids = array_keys($_SESSION['cart']);
